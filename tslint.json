@@ -1,0 +1,91 @@
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "rules": {
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "singleline": "never",
+        "esSpecCompliant": true
+      }
+    ],
+    "quotemark": [true, "single", "jsx-double"],
+    "no-inferrable-types": true,
+    "prefer-for-of": true,
+    "curly": true,
+    "no-console": [true, "log"],
+    "no-dynamic-delete": true,
+    "no-empty": true,
+    "no-floating-promises": false,
+    "no-invalid-this": true,
+    "no-misused-new": true,
+    "no-shadowed-variable": true,
+    "no-string-literal": true,
+    "no-string-throw": true,
+    "no-unbound-method": [true, "ignore-static"],
+    "no-unsafe-finally": true,
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "no-use-before-declare": false,
+    "no-var-keyword": true,
+    "restrict-plus-operands": true,
+    "strict-type-predicates": true,
+    "triple-equals": true,
+    "unnecessary-constructor": true,
+    "use-isnan": true,
+    "deprecation": true,
+    "eofline": true,
+    "indent": [true, "spaces", 4],
+    "prefer-const": true,
+    "array-type": [true, "array"],
+    "arrow-parens": true,
+    "arrow-return-shorthand": [true],
+    "class-name": true,
+    "comment-format": [true, "check-space"],
+    "jsdoc-format": true,
+    "no-redundant-jsdoc": true,
+    "encoding": true,
+    "import-spacing": true,
+    "interface-name": [true, "never-prefix"],
+    "no-consecutive-blank-lines": true,
+    "no-trailing-whitespace": true,
+    "no-unnecessary-callback-wrapper": true,
+    "no-unnecessary-initializer": true,
+    "one-variable-per-declaration": true,
+    "prefer-template": [true, "allow-single-concat"],
+    "space-before-function-paren": [
+      true,
+      {
+        "anonymous": "never",
+        "named": "never",
+        "method": "never",
+        "constructor": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case"
+    ],
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": false,
+    "ordered-imports": [
+      true,
+      {
+        "named-imports-order": "any"
+      }
+    ],
+    "interface-over-type-literal": false,
+    "member-access": false,
+    "prettier": true,
+    "jsx-boolean-value": false,
+    "object-literal-sort-keys": false,
+    "prefer-conditional-expression": false
+  }
+}

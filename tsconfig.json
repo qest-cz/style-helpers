@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "es5",
+      "es6",
+      "es7",
+      "es2017"
+    ],
+    "skipLibCheck": true,
+    "removeComments": true,
+    "baseUrl": "./",
+    "noImplicitAny": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "outDir": "./lib",
+    "declaration": true
+  },
+  "include": ["src/*"],
+  "exclude": ["node_modules", "lib"]
+}
+  

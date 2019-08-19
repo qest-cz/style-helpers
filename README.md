@@ -1,4 +1,4 @@
-# @qest-cz/style-helpers
+# @qest/style-helpers
 
 Set of helper functions for easier work with styled components.
 
@@ -17,7 +17,7 @@ export const { color, resolution, util, baseUnit, transition, cssCondition, medi
 
 ```tsx
 // styled.ts
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { color, media, baseUnit } from '../style-helpers';
 
 export const Heading = styled.h1`

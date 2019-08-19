@@ -31,7 +31,7 @@ export const Heading = styled.h1`
 `;
 ```
 
-If you don't care about care about types, you can import functions directly from the package.
+If you don't care about types, you can import functions directly from the package.
 
 ```tsx
 import { color, resolution, util, baseUnit, transition, cssCondition, media } from '@qest/style-helpers';

@@ -1,6 +1,6 @@
-import { css, FlattenInterpolation } from 'styled-components'
+import { css, FlattenInterpolation } from 'styled-components';
 
-import { get } from './utils'
+import { get } from './utils';
 
 interface GeneralTheme {
     colors: any;

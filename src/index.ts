@@ -1,27 +1,25 @@
 import get from 'lodash/get';
-import { css, FlattenInterpolation } from 'styled-components';
+import { css, DefaultTheme, FlattenInterpolation } from 'styled-components';
 
-interface GeneralTheme {
+interface GeneralTheme extends DefaultTheme {
     colors: any;
     resolution: any;
     utils: any;
 }
 
-const createStyledHelpers = <T extends GeneralTheme>() => {
-    type ResolutionKey = keyof T['resolution'];
-    type PropsWithTheme = { theme: T };
+const createStyledHelpers = () => {
+    type ResolutionKey = keyof GeneralTheme['resolution'];
+    type PropsWithTheme = { theme: GeneralTheme };
     type Styles = FlattenInterpolation<PropsWithTheme>;
 
     return {
-        color: (colorKey: keyof T['colors']) => ({ theme }: PropsWithTheme): number => {
+        color: (colorKey: keyof GeneralTheme['colors']) => ({ theme }: PropsWithTheme): number => {
             return get(theme, ['colors', colorKey]);
         },
-        resolution: (resolutionKey: keyof T['resolution']) => ({
-            theme,
-        }: PropsWithTheme): string => {
+        resolution: (resolutionKey: keyof ResolutionKey) => ({ theme }: PropsWithTheme): string => {
             return get(theme, ['resolution', resolutionKey]);
         },
-        util: (utilKey: keyof T['utils']) => ({
+        util: (utilKey: keyof GeneralTheme['utils']) => ({
             theme,
         }: PropsWithTheme): string | number | ((...params: any) => string | number) => {
             return get(theme, ['utils', utilKey]);
@@ -67,11 +65,11 @@ const createStyledHelpers = <T extends GeneralTheme>() => {
                 transition: ${properties} ${duration}s ${animation};
             `;
         },
-        cssCondition: (condition: boolean, styles: Styles) => {
+        cssCondition: (condition: boolean, ifStyles: Styles, elseStyles: Styles) => {
             if (condition) {
-                return styles;
+                return ifStyles;
             }
-            return null;
+            return elseStyles;
         },
     };
 };

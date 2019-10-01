@@ -2,20 +2,32 @@
 
 Set of helper functions for easier work with styled components.
 
-## Usage
+## Preferred usage
+
+You should import `createStyleHelpers` and pass your `Theme` interface into it and then use created object.
 
 ```tsx
-import { color, resolution, util, baseUnit, transition, cssCondition, media } from '@qest/style-helpers';
-import styled, { css } from 'styled-components';
+// style-helpers.ts
+import createStyleHelpers from '@qest/style-helpers';
 
-export const Button = styled.button`
-    ${({ active }) =>
-    cssCondition(
-      active,
-      css`
-        background-color: ${color("blue")};
-      `,
-    )}
+const initializedStyleHelpers = createStyleHelpers<Theme>();
+
+export const { color, resolution, util, baseUnit, transition, cssCondition, media } = initializedStyleHelpers; 
+```
+
+```tsx
+// styled.ts
+import styled, { css } from 'styled-components';
+import { color, media, baseUnit } from '../style-helpers';
+
+export const Heading = styled.h1`
+    color: ${color("blue")};
+    ${media.min(
+        'screenMdMin',
+        css`
+            margin-bottom: ${baseUnit(2)};
+        `,
+    )};
 `;
 ```
 

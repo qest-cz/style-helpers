@@ -1,26 +1,26 @@
-import { css, DefaultTheme, FlattenInterpolation } from 'styled-components';
+import { css, FlattenInterpolation } from 'styled-components';
 
 import { get } from './utils';
 
-interface GeneralTheme extends DefaultTheme {
+interface GeneralTheme {
     colors: any;
     resolution: any;
     utils: any;
 }
 
-const createStyledHelpers = () => {
+const createStyledHelpers = <T extends GeneralTheme>() => {
     type ResolutionKey = keyof GeneralTheme['resolution'];
-    type PropsWithTheme = { theme: GeneralTheme };
+    type PropsWithTheme = { theme: T };
     type Styles = FlattenInterpolation<PropsWithTheme>;
 
     return {
-        color: (colorKey: keyof GeneralTheme['colors']) => ({ theme }: PropsWithTheme): number => {
+        color: (colorKey: keyof T['colors']) => ({ theme }: PropsWithTheme): number => {
             return get(theme, ['colors', colorKey]);
         },
         resolution: (resolutionKey: keyof ResolutionKey) => ({ theme }: PropsWithTheme): string => {
             return get(theme, ['resolution', resolutionKey]);
         },
-        util: (utilKey: keyof GeneralTheme['utils']) => ({
+        util: (utilKey: keyof T['utils']) => ({
             theme,
         }: PropsWithTheme): string | number | ((...params: any) => string | number) => {
             return get(theme, ['utils', utilKey]);

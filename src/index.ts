@@ -1,5 +1,6 @@
-import get from 'lodash/get';
 import { css, DefaultTheme, FlattenInterpolation } from 'styled-components';
+
+import { get } from './utils';
 
 interface GeneralTheme extends DefaultTheme {
     colors: any;

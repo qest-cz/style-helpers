@@ -9,6 +9,9 @@ steps:
 - task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@3
   displayName: 'Use Yarn 1.x'
 
+- script: 'yarn cache clean'
+  displayName: 'clean yarn cache'
+
 - script: yarn
   displayName: 'yarn install'
 

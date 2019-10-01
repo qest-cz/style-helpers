@@ -3,27 +3,27 @@ import { css, FlattenInterpolation } from 'styled-components';
 import { get } from './utils';
 
 interface GeneralTheme {
-    colors: any;
-    resolution: any;
-    utils: any;
+    colors?: any;
+    resolution?: any;
+    utils?: any;
 }
 
-const createStyledHelpers = <T extends GeneralTheme>() => {
+const createStyledHelpers = () => {
     type ResolutionKey = keyof GeneralTheme['resolution'];
-    type PropsWithTheme = { theme: T };
+    type PropsWithTheme = { theme: GeneralTheme };
     type Styles = FlattenInterpolation<PropsWithTheme>;
 
     return {
-        color: (colorKey: keyof T['colors']) => ({ theme }: PropsWithTheme): number => {
-            return get(theme, ['colors', colorKey]);
+        color: (colorKey: keyof GeneralTheme['colors']) => ({ theme }: PropsWithTheme): number => {
+            return get(theme, ['colors', colorKey], colorKey as string);
         },
         resolution: (resolutionKey: keyof ResolutionKey) => ({ theme }: PropsWithTheme): string => {
-            return get(theme, ['resolution', resolutionKey]);
+            return get(theme, ['resolution', resolutionKey], resolutionKey);
         },
-        util: (utilKey: keyof T['utils']) => ({
+        util: (utilKey: keyof GeneralTheme['utils']) => ({
             theme,
         }: PropsWithTheme): string | number | ((...params: any) => string | number) => {
-            return get(theme, ['utils', utilKey]);
+            return get(theme, ['utils', utilKey], utilKey as string);
         },
         baseUnit: (multiplier = 1) => ({ theme }: PropsWithTheme): string => {
             const selectedUnit = get(theme, ['utils', 'baseUnit']) as number;
@@ -33,14 +33,22 @@ const createStyledHelpers = <T extends GeneralTheme>() => {
         media: {
             min: (breakpoint: ResolutionKey, styles: Styles) => ({ theme }: PropsWithTheme) => {
                 return css`
-                    @media (min-width: ${theme.resolution[breakpoint]}) {
+                    @media (min-width: ${get(
+                            theme,
+                            ['resolution', breakpoint],
+                            breakpoint as string,
+                        )}) {
                         ${styles}
                     }
                 `;
             },
             max: (breakpoint: ResolutionKey, styles: Styles) => ({ theme }: PropsWithTheme) => {
                 return css`
-                    @media (max-width: ${theme.resolution[breakpoint]}) {
+                    @media (max-width: ${get(
+                            theme,
+                            ['resolution', breakpoint],
+                            breakpoint as string,
+                        )}) {
                         ${styles}
                     }
                 `;
@@ -49,8 +57,15 @@ const createStyledHelpers = <T extends GeneralTheme>() => {
                 theme,
             }: PropsWithTheme) => {
                 return css`
-                    @media (min-width: ${theme.resolution[minBreakpoint]}) and (max-width: ${theme
-                            .resolution[maxBreakpoint]}) {
+                    @media (min-width: ${get(
+                            theme,
+                            ['resolution', minBreakpoint],
+                            minBreakpoint as string,
+                        )}) and (max-width: ${get(
+                            theme,
+                            ['resolution', maxBreakpoint],
+                            maxBreakpoint as string,
+                        )}) {
                         ${styles}
                     }
                 `;

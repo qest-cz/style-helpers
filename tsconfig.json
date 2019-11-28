@@ -24,7 +24,7 @@
     "noImplicitAny": true,
     "strict": true,
     "resolveJsonModule": true,
-    "outDir": "./lib",
+    "outDir": ".",
     "declaration": true
   },
   "include": ["src/**/*"],

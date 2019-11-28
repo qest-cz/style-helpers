@@ -2,13 +2,11 @@
   "name": "@qest/style-helpers",
   "description": "Set of helper functions for easier work with styled components.",
   "displayName": "@qest/style-helpers",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/qest-cz/style-helpers"
   },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "author": "Lukáš Vaic <lukas.vaic@qest.cz>",
   "license": "MIT",
   "scripts": {

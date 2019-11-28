@@ -81,3 +81,11 @@ const theme = {
     },
 };
 ```
+
+## React-native
+
+For react-native use imports from `native` folder
+
+```tsx
+import createStyleHelpers from '@qest/style-helpers/native';
+```

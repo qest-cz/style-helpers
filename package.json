@@ -2,7 +2,7 @@
   "name": "@qest/style-helpers",
   "description": "Set of helper functions for easier work with styled components.",
   "displayName": "@qest/style-helpers",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/qest-cz/style-helpers"

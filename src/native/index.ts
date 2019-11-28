@@ -1,6 +1,7 @@
-import { css, Interpolation } from 'styled-components';
+import { Interpolation } from 'styled-components';
+import { css } from 'styled-components/native';
 
-import { get } from './utils';
+import { get } from '../utils';
 
 interface GeneralTheme {
     colors?: any;
@@ -25,10 +26,10 @@ const createStyledHelpers = <T extends GeneralTheme>() => {
         }: PropsWithTheme): string | number | ((...params: any) => string | number) => {
             return get(theme, ['utils', utilKey], utilKey as string);
         },
-        baseUnit: (multiplier = 1) => ({ theme }: PropsWithTheme): string => {
-            const selectedUnit = get(theme, ['utils', 'baseUnit']) as number;
+        baseUnit: (multiplier = 1) => ({ theme }: PropsWithTheme): number => {
+            const selectedUnit = get(theme, ['utils', 'baseUnit']);
 
-            return `${selectedUnit * multiplier}px`;
+            return selectedUnit * multiplier;
         },
         media: {
             min: (breakpoint: ResolutionKey, styles: Styles) => ({ theme }: PropsWithTheme) => {
